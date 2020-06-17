@@ -4,6 +4,14 @@ import './style/index.css';
 import quizService from './quizService';
 import QuestionBox from './components/QuestionBox';
 import Result from './components/Result';
+import ReactGA from 'react-ga';
+import auth from './auth.ts';
+
+const trackingId = "UA-169836644-1";
+ReactGA.initialize(trackingId);
+ReactGA.set({
+  userId: auth.currentUserId(),
+});
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
