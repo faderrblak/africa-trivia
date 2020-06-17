@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/africa-trivia/static/css/main.7e5171d6.chunk.css",
+    "main.js": "/africa-trivia/static/js/main.c5309cc4.chunk.js",
+    "main.js.map": "/africa-trivia/static/js/main.c5309cc4.chunk.js.map",
+    "runtime-main.js": "/africa-trivia/static/js/runtime-main.e3082493.js",
+    "runtime-main.js.map": "/africa-trivia/static/js/runtime-main.e3082493.js.map",
+    "static/js/2.9ace9f51.chunk.js": "/africa-trivia/static/js/2.9ace9f51.chunk.js",
+    "static/js/2.9ace9f51.chunk.js.map": "/africa-trivia/static/js/2.9ace9f51.chunk.js.map",
+    "index.html": "/africa-trivia/index.html",
+    "precache-manifest.fb19b0c725bb7bd28b7b9cf518ca2d76.js": "/africa-trivia/precache-manifest.fb19b0c725bb7bd28b7b9cf518ca2d76.js",
+    "service-worker.js": "/africa-trivia/service-worker.js",
+    "static/css/main.7e5171d6.chunk.css.map": "/africa-trivia/static/css/main.7e5171d6.chunk.css.map",
+    "static/js/2.9ace9f51.chunk.js.LICENSE.txt": "/africa-trivia/static/js/2.9ace9f51.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e3082493.js",
+    "static/js/2.9ace9f51.chunk.js",
+    "static/css/main.7e5171d6.chunk.css",
+    "static/js/main.c5309cc4.chunk.js"
+  ]
+}
