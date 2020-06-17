@@ -74,7 +74,7 @@ const qBank = [
     {
         question: "Which former president was known as Mwalimu? Swahili for teacher.",
         answers: ["Julius Nyerere", "Jomo Kenyatta", "Kenneth Kaunda", "Samora Machel"],
-        correct: "Julius Nyerere ",
+        correct: "Julius Nyerere",
         questionId: "000013",
     },
     {
