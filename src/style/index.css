@@ -51,6 +51,15 @@ body {
   font-family: 'Poppins';
 }
 
+.selectedBtn {
+  background-color: #ffcd24;
+  margin: 2.5px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-family: 'Poppins';
+}
+
 .score-board {
   padding: 10px;
 }

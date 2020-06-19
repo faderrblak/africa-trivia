@@ -10,7 +10,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [response, setResponse] = useState(0);
 
-    //fetch questions from quizService.js
+    //fetch 5 random questions from quizService.js
   const getQuestions = () => {
     quizService().then(question => {
       setQuestions(question);
@@ -21,6 +21,7 @@ const Quiz = () => {
     getQuestions();
   }, []);
 
+  //calculate correct answer and count responses
   const computeAnswer = (answer, correctAnswer) => {
     if (answer === correctAnswer) {
       setScore(score + 1)
@@ -55,6 +56,9 @@ const Quiz = () => {
       
       {/*5 responses selected*/}
       {response === 5 ? (<Result score={score} playAgain={playAgain}/>) : null}
+      
+      {/*submit button*/}
+      <button className="playBtn">Submit</button>
       
       {/*footer*/}
       <div className="footer">{String.fromCharCode(169) + ' 2020. Faderr Johm'}</div>

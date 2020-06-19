@@ -2,20 +2,29 @@ import React, {useState} from 'react';
 
 const QuestionBox = ({question, options, selected}) => {
     
-    const [answer, setAnswer] = useState(options);
+    const [answerIndex, setAnswerIndex] = useState();
+
+    //user's choice
+    const choice = (index) => {
+        const isSelected = answerIndex === index;
+        return isSelected ? 'selectedBtn' : 'answerBtn';
+    };
     
     return (
         <div className="questionBox">
+            {/*the question*/}
             <div className="question">{question}</div>
-            {answer.map((text, index) => (
-                <button key={index} className="answerBtn" onClick={() => {
-                    setAnswer([text]);
+            
+            {/*map through answers and create button for each answer*/}
+            {options.map((text, index) => (
+                <button key={index} className={choice(index)} onClick={() => {
+                    choice(index);
+                    setAnswerIndex(index);
                     selected(text);
                 }}>
                     {text}
                 </button>
             ))}
-            <button className="playBtn">Submit</button>
         </div>
     );
 };
