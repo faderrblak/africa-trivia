@@ -15,6 +15,7 @@ const QuestionBox = ({question, options, selected}) => {
                     {text}
                 </button>
             ))}
+            <button className="playBtn">Submit</button>
         </div>
     );
 };
