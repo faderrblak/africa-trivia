@@ -6,9 +6,9 @@ const Result = ({score, results, playAgain}) => (
         <div className="score">You scored {score} / 5 correct answers!</div>
         <br/>
         {results.map(item => (
-            <div>
-                {item[0] === "correct" ? <div><FaCheck/></div> : <div><FaTimes/></div>}
-                <div>{item[1]}</div>
+            <div className="results">
+                {item[0] === "correct" ? <span style={{"color": "green"}}><FaCheck/></span> : <span style={{"color": "red"}}><FaTimes/></span>}
+                <span className="question" style={{"margin-left":"5px"}}>{item[1]}</span>
             </div>
         ))}
         <br/>
