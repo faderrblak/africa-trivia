@@ -11,6 +11,7 @@ const Quiz = () => {
   const [answerOptions, setAnswers] = useState([]);
   const [questionIds, setQuestionIds] = useState([]);
   const [displayScore, setDisplayScore] = useState(false);
+  const [checkAnswer, setCheck] = useState([]);
 
   //fetch 5 random questions from quizService.js
   const getQuestions = () => {
@@ -25,9 +26,9 @@ const Quiz = () => {
 
   //handle responses and allow user to change response
   const handleClick = (answer, qId) => {
-    var array = [...questionIds];
-    var array2 = [...answerOptions];
-    var index = array.indexOf(qId);
+    let array = [...questionIds];
+    let array2 = [...answerOptions];
+    let index = array.indexOf(qId);
     if (index > -1) {
       array.splice(index, 1);
       array2.splice(index, 1);
@@ -37,21 +38,26 @@ const Quiz = () => {
     setQuestionIds(array.concat(qId));
     setAnswers(array2.concat(answer));
   };
-  
+
   //calculate answer
   const calcAnswer = (obj, qIds, anss) => {
     var correctAns = [];
+    var answerCheck = [];
 
     qIds.map((itemId, i) => {
-      var index = obj.map(e => e.questionId).indexOf(itemId);
-      var check = obj[index].correct;
-      var ans = anss[i];
+      let index = obj.map(e => e.questionId).indexOf(itemId);
+      let check = obj[index].correct;
+      let ans = anss[i];
       if (check === ans) {
         correctAns.push(ans);
+        answerCheck.push(["correct", obj[index].question])
+      } else {
+        answerCheck.push(["wrong", obj[index].question])
       }
     });
 
     setScore(correctAns.length);
+    setCheck(answerCheck);
   }
 
   //Submit and count score
@@ -87,7 +93,7 @@ const Quiz = () => {
       ))}
       
       {/*5 responses selected*/}
-      {displayScore === true ? (<Result score={score} playAgain={playAgain}/>) : null}
+      {displayScore === true ? (<Result score={score} results={checkAnswer} playAgain={playAgain}/>) : null}
       
       {/*submit button*/}
       {displayScore === false ? (<button className="playBtn" onClick={() => {submit(); calcAnswer(questions, questionIds, answerOptions)}}>Submit</button>) : null}
