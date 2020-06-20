@@ -8,9 +8,9 @@ import Result from './components/Result';
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
-  const [response, setResponse] = useState(0);
   const [answerOptions, setAnswers] = useState([]);
-  const [questionIds, setQuestionIds] =useState([]);
+  const [questionIds, setQuestionIds] = useState([]);
+  const [displayScore, setDisplayScore] = useState(false);
 
   //fetch 5 random questions from quizService.js
   const getQuestions = () => {
@@ -23,7 +23,7 @@ const Quiz = () => {
     getQuestions();
   }, []);
 
-  //calculate correct answer and count responses
+  //handle responses and allow user to change response
   const handleClick = (answer, qId) => {
     var array = [...questionIds];
     var array2 = [...answerOptions];
@@ -36,17 +36,20 @@ const Quiz = () => {
     }
     setQuestionIds(array.concat(qId));
     setAnswers(array2.concat(answer));
-    
-    setResponse(response < 5 ? response + 1 : 5);
+  }
+
+  //Submit and count score
+  const submitAnswers = () => {
+    setDisplayScore(true);
   }
   
   //function to playAgain
   const playAgain = () => {
     getQuestions();
     setScore(0);
-    setResponse(0);
     setAnswers([])
     setQuestionIds([])
+    setDisplayScore(false);
   };
 
   return(
@@ -55,9 +58,9 @@ const Quiz = () => {
       <div className="title">Africa Trivia</div>
       
       {/*Lesss than 5 responses selected*/}
-      {questionIds.length < 5 ? (<div className="instruction">Select an answer. Once you've answered all 5 you will see your result in the next page.</div>) : null}
+      {displayScore === false ? (<div className="instruction">Select an answer. Once you've answered all 5 you will see your result in the next page.</div>) : null}
       {questions.length > 0 && 
-        questionIds.length < 5 && 
+        displayScore === false && 
         questions.map(({question, answers, questionId}) => (
           <QuestionBox 
             question={question} 
@@ -68,10 +71,10 @@ const Quiz = () => {
       ))}
       
       {/*5 responses selected*/}
-      {questionIds.length === 5 ? (<Result score={answerOptions} playAgain={playAgain}/>) : null}
+      {displayScore === true ? (<Result score={answerOptions} playAgain={playAgain}/>) : null}
       
       {/*submit button*/}
-      <button className="playBtn">Submit</button>
+      {displayScore === false ? (<button className="playBtn" onClick={submitAnswers}>Submit</button>) : null}
       
       {/*footer*/}
       <div className="footer">{String.fromCharCode(169) + ' 2020. Faderr Johm'}</div>
