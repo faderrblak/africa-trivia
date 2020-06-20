@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/africa-trivia/precache-manifest.427e20b37f7428d2c32fbec539e9dafa.js"
+  "/africa-trivia/precache-manifest.9fe825977fba8f0d829363a99b35f5bb.js"
 );
 
 self.addEventListener('message', (event) => {

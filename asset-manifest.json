@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/africa-trivia/static/css/main.7e5171d6.chunk.css",
-    "main.js": "/africa-trivia/static/js/main.559b8f52.chunk.js",
-    "main.js.map": "/africa-trivia/static/js/main.559b8f52.chunk.js.map",
+    "main.css": "/africa-trivia/static/css/main.b64abecb.chunk.css",
+    "main.js": "/africa-trivia/static/js/main.bf3f82ae.chunk.js",
+    "main.js.map": "/africa-trivia/static/js/main.bf3f82ae.chunk.js.map",
     "runtime-main.js": "/africa-trivia/static/js/runtime-main.e3082493.js",
     "runtime-main.js.map": "/africa-trivia/static/js/runtime-main.e3082493.js.map",
-    "static/js/2.9ace9f51.chunk.js": "/africa-trivia/static/js/2.9ace9f51.chunk.js",
-    "static/js/2.9ace9f51.chunk.js.map": "/africa-trivia/static/js/2.9ace9f51.chunk.js.map",
+    "static/js/2.1df8c960.chunk.js": "/africa-trivia/static/js/2.1df8c960.chunk.js",
+    "static/js/2.1df8c960.chunk.js.map": "/africa-trivia/static/js/2.1df8c960.chunk.js.map",
     "index.html": "/africa-trivia/index.html",
-    "precache-manifest.427e20b37f7428d2c32fbec539e9dafa.js": "/africa-trivia/precache-manifest.427e20b37f7428d2c32fbec539e9dafa.js",
+    "precache-manifest.9fe825977fba8f0d829363a99b35f5bb.js": "/africa-trivia/precache-manifest.9fe825977fba8f0d829363a99b35f5bb.js",
     "service-worker.js": "/africa-trivia/service-worker.js",
-    "static/css/main.7e5171d6.chunk.css.map": "/africa-trivia/static/css/main.7e5171d6.chunk.css.map",
-    "static/js/2.9ace9f51.chunk.js.LICENSE.txt": "/africa-trivia/static/js/2.9ace9f51.chunk.js.LICENSE.txt"
+    "static/css/main.b64abecb.chunk.css.map": "/africa-trivia/static/css/main.b64abecb.chunk.css.map",
+    "static/js/2.1df8c960.chunk.js.LICENSE.txt": "/africa-trivia/static/js/2.1df8c960.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e3082493.js",
-    "static/js/2.9ace9f51.chunk.js",
-    "static/css/main.7e5171d6.chunk.css",
-    "static/js/main.559b8f52.chunk.js"
+    "static/js/2.1df8c960.chunk.js",
+    "static/css/main.b64abecb.chunk.css",
+    "static/js/main.bf3f82ae.chunk.js"
   ]
 }
