@@ -33,13 +33,29 @@ const Quiz = () => {
       array2.splice(index, 1);
       setQuestionIds([array]);
       setAnswers([array2])
-    }
+    };
     setQuestionIds(array.concat(qId));
     setAnswers(array2.concat(answer));
+  };
+  
+  //calculate answer
+  const calcAnswer = (obj, qIds, anss) => {
+    var correctAns = [];
+
+    qIds.map((itemId, i) => {
+      var index = obj.map(e => e.questionId).indexOf(itemId);
+      var check = obj[index].correct;
+      var ans = anss[i];
+      if (check === ans) {
+        correctAns.push(ans);
+      }
+    });
+
+    setScore(correctAns.length);
   }
 
   //Submit and count score
-  const submitAnswers = () => {
+  const submit = () => {
     setDisplayScore(true);
   }
   
@@ -47,8 +63,8 @@ const Quiz = () => {
   const playAgain = () => {
     getQuestions();
     setScore(0);
-    setAnswers([])
-    setQuestionIds([])
+    setAnswers([]);
+    setQuestionIds([]);
     setDisplayScore(false);
   };
 
@@ -71,10 +87,10 @@ const Quiz = () => {
       ))}
       
       {/*5 responses selected*/}
-      {displayScore === true ? (<Result score={answerOptions} playAgain={playAgain}/>) : null}
+      {displayScore === true ? (<Result score={score} playAgain={playAgain}/>) : null}
       
       {/*submit button*/}
-      {displayScore === false ? (<button className="playBtn" onClick={submitAnswers}>Submit</button>) : null}
+      {displayScore === false ? (<button className="playBtn" onClick={() => {submit(); calcAnswer(questions, questionIds, answerOptions)}}>Submit</button>) : null}
       
       {/*footer*/}
       <div className="footer">{String.fromCharCode(169) + ' 2020. Faderr Johm'}</div>
