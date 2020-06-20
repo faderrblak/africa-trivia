@@ -9,8 +9,10 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [response, setResponse] = useState(0);
+  const [answerOptions, setAnswers] = useState([]);
+  const [questionIds, setQuestionIds] =useState([]);
 
-    //fetch 5 random questions from quizService.js
+  //fetch 5 random questions from quizService.js
   const getQuestions = () => {
     quizService().then(question => {
       setQuestions(question);
@@ -22,10 +24,19 @@ const Quiz = () => {
   }, []);
 
   //calculate correct answer and count responses
-  const computeAnswer = (answer, correctAnswer) => {
-    if (answer === correctAnswer) {
-      setScore(score + 1)
-    };
+  const handleClick = (answer, qId) => {
+    var array = [...questionIds];
+    var array2 = [...answerOptions];
+    var index = array.indexOf(qId);
+    if (index > -1) {
+      array.splice(index, 1);
+      array2.splice(index, 1);
+      setQuestionIds([array]);
+      setAnswers([array2])
+    }
+    setQuestionIds(array.concat(qId));
+    setAnswers(array2.concat(answer));
+    
     setResponse(response < 5 ? response + 1 : 5);
   }
   
@@ -34,6 +45,8 @@ const Quiz = () => {
     getQuestions();
     setScore(0);
     setResponse(0);
+    setAnswers([])
+    setQuestionIds([])
   };
 
   return(
@@ -42,20 +55,20 @@ const Quiz = () => {
       <div className="title">Africa Trivia</div>
       
       {/*Lesss than 5 responses selected*/}
-      {response < 5 ? (<div className="instruction">Select an answer. Once you've answered all 5 you will see your result in the next page.</div>) : null}
+      {questionIds.length < 5 ? (<div className="instruction">Select an answer. Once you've answered all 5 you will see your result in the next page.</div>) : null}
       {questions.length > 0 && 
-        response < 5 && 
-        questions.map(({question, answers, correct, questionId}) => (
+        questionIds.length < 5 && 
+        questions.map(({question, answers, questionId}) => (
           <QuestionBox 
             question={question} 
             options={answers} 
             key={questionId}
-            selected={answer => computeAnswer(answer, correct)}
+            selected={answer => handleClick(answer, questionId)}
           />
       ))}
       
       {/*5 responses selected*/}
-      {response === 5 ? (<Result score={score} playAgain={playAgain}/>) : null}
+      {questionIds.length === 5 ? (<Result score={answerOptions} playAgain={playAgain}/>) : null}
       
       {/*submit button*/}
       <button className="playBtn">Submit</button>

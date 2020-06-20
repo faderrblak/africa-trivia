@@ -18,8 +18,8 @@ const QuestionBox = ({question, options, selected}) => {
             {/*map through answers and create button for each answer*/}
             {options.map((text, index) => (
                 <button key={index} className={choice(index)} onClick={() => {
-                    choice(index);
                     setAnswerIndex(index);
+                    choice(index);
                     selected(text);
                 }}>
                     {text}
