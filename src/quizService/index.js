@@ -481,4 +481,14 @@ const qBank = [
     }
 ]
 
-export default (n = 5) => Promise.resolve(qBank.sort(() => 0.5 - Math.random()).slice(0, n));
+const randomNoRepeats = (array, n) => {
+    var copy = array.slice(0);
+    return function() {
+        if (copy.length < 1) { copy = array.slice(0); }
+        var index = Math.floor(Math.random() * copy.length);
+        var item = copy.splice(index, n);
+        return item;
+    };
+}
+
+export default (n = 5) => Promise.resolve(randomNoRepeats(qBank, n));
