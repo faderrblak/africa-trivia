@@ -70,10 +70,6 @@ body {
   margin: 10px 0;
 }
 
-.results {
-  
-}
-
 .playBtn {
   background-color: #ffcd24;
   font-size: 20px;
@@ -84,6 +80,15 @@ body {
   border-radius: 5px;
   font-family: 'Poppins';
   margin-bottom: 50px;
+}
+
+.correctAns {
+  background-color: rgb(7, 163, 7);
+  margin: 2.5px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-family: 'Poppins';
 }
 
 .footer {
