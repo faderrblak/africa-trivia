@@ -50,7 +50,7 @@ const Quiz = () => {
       let ans = anss[i];
       if (check === ans) {
         correctAns.push(ans);
-        return answerCheck.push(["correct", obj[index].question])
+        return answerCheck.push(["correct", obj[index].question, obj[index].correct])
       } else {
         return answerCheck.push(["wrong", obj[index].question, obj[index].correct])
       }

@@ -9,7 +9,7 @@ const Result = ({score, results, playAgain}) => (
             <div>
                 {item[0] === "correct" ? <span style={{"color": "green"}}><FaCheck/></span> : <span style={{"color": "red"}}><FaTimes/></span>}
                 <span className="question" style={{"margin-left":"5px"}}>{item[1]}</span>
-                {item[2] ? <button className="correctAns">{item[2]}</button> : null}
+                <button className="correctAns">{item[2]}</button>
             </div>
         ))}
         <br/>
