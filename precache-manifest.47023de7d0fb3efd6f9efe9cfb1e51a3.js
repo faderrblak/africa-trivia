@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0ff2e7358d527c8acf59524838a58c5f",
+    "revision": "bff10ff625c40fb33cf82928987da8fc",
     "url": "/africa-trivia/index.html"
   },
   {
-    "revision": "dadb19fe8380e35d078b",
-    "url": "/africa-trivia/static/css/main.b64abecb.chunk.css"
+    "revision": "bfa962ae9abecc383b40",
+    "url": "/africa-trivia/static/css/main.3bf8b11c.chunk.css"
   },
   {
     "revision": "832aaf34ba5b20bc53a1",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/africa-trivia/static/js/2.1df8c960.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dadb19fe8380e35d078b",
-    "url": "/africa-trivia/static/js/main.8e5ed34a.chunk.js"
+    "revision": "bfa962ae9abecc383b40",
+    "url": "/africa-trivia/static/js/main.f18e80f3.chunk.js"
   },
   {
     "revision": "3d7c5df8b00077c0caff",
