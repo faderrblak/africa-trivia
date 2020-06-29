@@ -4,11 +4,12 @@ const QuestionBox = ({question, options, selected}) => {
     
     const [answerIndex, setAnswerIndex] = useState();
 
-    //user's choice
+    //handle user's choice ------
     const choice = (index) => {
         const isSelected = answerIndex === index;
         return isSelected ? 'selectedBtn' : 'answerBtn';
     };
+    // END: handle user's choice ------
     
     return (
         <div className="questionBox">

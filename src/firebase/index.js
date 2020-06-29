@@ -1,7 +1,11 @@
-import firebase from 'firebase/app';
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import * as firebase from 'firebase/app';
+
+// Add the Firebase products that you want to use
 import 'firebase/firestore';
 
-var firebaseConfig = {
+// Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
     apiKey: "AIzaSyDKtYWVgsOTv9qJ28NCfUxfpx-o0qNEUsU",
     authDomain: "africa-trivia.firebaseapp.com",
     databaseURL: "https://africa-trivia.firebaseio.com",
@@ -12,11 +16,7 @@ var firebaseConfig = {
     measurementId: "G-7M8KFS8JHQ"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
-let db = firebase.firestore();
-
-export default {
-    firebase, db
-}
+export const db = firebase.firestore();

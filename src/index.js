@@ -1,36 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 
+// import style sheet
 import './style/index.css';
-import quizService from './quizService';
-import firebase from './firebase/index';
 
+// import database from firebase file
+import {db} from './firebase/index';
+
+// import QuestionBox and Result component
 import QuestionBox from './components/QuestionBox';
 import Result from './components/Result';
 
 const Quiz = () => {
+  // fetch 5 questions from Firebase ----
   const [questions, setQuestions] = useState([]);
-  const [score, setScore] = useState(0);
-  const [answerOptions, setAnswers] = useState([]);
-  const [questionIds, setQuestionIds] = useState([]);
-  const [displayScore, setDisplayScore] = useState(false);
-  const [checkAnswer, setCheck] = useState([]);
 
-  //fetch 5 random questions from quizService.js
   const getQuestions = () => {
-    quizService().then(question => {
-      setQuestions(question);
+    db.collection("quizService").get()
+    .then(response => {
+      const allQuestions = [];
+      response.docs.map(doc => {
+        const question = {
+          questionId: doc.id,
+          ...doc.data()
+        };
+        allQuestions.push(question);
+      });
+      var index = Math.floor(Math.random() * allQuestions.length);
+      var item = allQuestions.splice(index, 5);
+      setQuestions(item);
     });
   };
 
   useEffect(() => {
     getQuestions();
   }, []);
+  // END: fetch questions ------
 
-  //handle responses and allow user to change response
+  // handleClick and allow user to change response ------
+  const [answerChoices, setAnswers] = useState([]);
+  const [questionIds, setQuestionIds] = useState([]);
+
   const handleClick = (answer, qId) => {
     let array = [...questionIds];
-    let array2 = [...answerOptions];
+    let array2 = [...answerChoices];
     let index = array.indexOf(qId);
     if (index > -1) {
       array.splice(index, 1);
@@ -41,11 +54,15 @@ const Quiz = () => {
     setQuestionIds(array.concat(qId));
     setAnswers(array2.concat(answer));
   };
+  // END: handleClick event ------
 
-  //calculate answer
+  // check answers and calculate score ------
+  const [score, setScore] = useState(0);
+  const [checkAnswer, setCheck] = useState([]);
+
   const calcAnswer = (obj, qIds, anss) => {
-    var correctAns = [];
-    var answerCheck = [];
+    let correctAns = [];
+    let answerCheck = [];
 
     qIds.map((itemId, i) => {
       let index = obj.map(e => e.questionId).indexOf(itemId);
@@ -61,14 +78,18 @@ const Quiz = () => {
 
     setScore(correctAns.length);
     setCheck(answerCheck);
-  }
+  };
+  // END: answer calculation ------
 
-  //Submit and count score
+  //handle Submit and change display score ------
+  const [displayScore, setDisplayScore] = useState(false);
+
   const submit = () => {
     setDisplayScore(true);
-  }
+  };
+  // END: handle Submit ------
   
-  //function to playAgain
+  //handle playAgain function ------
   const playAgain = () => {
     getQuestions();
     setScore(0);
@@ -76,8 +97,7 @@ const Quiz = () => {
     setQuestionIds([]);
     setDisplayScore(false);
   };
-
-  console.log(firebase.db);
+  // END: handle playAgain function ------
 
   return(
     <div className="page">
@@ -101,7 +121,7 @@ const Quiz = () => {
       {displayScore === true ? (<Result score={score} results={checkAnswer} playAgain={playAgain}/>) : null}
       
       {/*submit button*/}
-      {displayScore === false ? (<button className="playBtn" onClick={() => {submit(); calcAnswer(questions, questionIds, answerOptions)}}>Submit</button>) : null}
+      {displayScore === false ? (<button className="playBtn" onClick={() => {submit(); calcAnswer(questions, questionIds, answerChoices)}}>Submit</button>) : null}
       
       {/*footer*/}
       <div className="footer">{String.fromCharCode(169) + ' 2020. Faderr Johm'}</div>
@@ -109,6 +129,7 @@ const Quiz = () => {
   )
 };
 
+// render Quiz component to DOM ------
 ReactDOM.render(
   <Quiz/>,
   document.getElementById('root')
