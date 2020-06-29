@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
+
 import './style/index.css';
 import quizService from './quizService';
+import firebase from './firebase/index';
+
 import QuestionBox from './components/QuestionBox';
 import Result from './components/Result';
 
@@ -73,6 +76,8 @@ const Quiz = () => {
     setQuestionIds([]);
     setDisplayScore(false);
   };
+
+  console.log(firebase.db);
 
   return(
     <div className="page">
